@@ -1,26 +1,24 @@
 // TODO
-var GroceryListItem = (props) => (
+var GroceryList = (props) => (
   <ul>
-    <li>{props.groceryItems[0]}</li>
-    <li>{props.groceryItems[1]}</li>
+    {props.groceryItems.map(item =>
+      <GroceryListItem item={item} />
+    )}
   </ul>
-)
-
-
-
-var GroceryList = () => (
-  <div>
-   <h2>My Grocery List</h2>
-    <GroceryListItem groceryItems={['tacos', 'socks']}/>
-  </div>
 );
 
-// var ChewingGum = () => (
-//   <li>Chewing Gum</li>
-// );
+class GroceryListItem extends React.Component {
 
-// var Socks = () => (
-//   <li>Socks</li>
-// );
+  constructor(props) {
+    super(props);
+  }
 
-ReactDOM.render(<GroceryList />, document.getElementById("app"));
+  render() {
+    return (
+      <li>{this.props.item}</li>
+    );
+  }
+
+}
+
+ReactDOM.render(<GroceryList groceryItems={['Chewing Gum','Socks']} />, document.getElementById("app"));
